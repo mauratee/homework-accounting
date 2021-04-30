@@ -1,24 +1,34 @@
 melon_cost = 1.00
 
 def customer_payment(path):
-    customer_orders = open(path)
-
+    """Opens file, tokenizes llines, prints statement if expected amount not equal to paid amount """
+    customer_orders = open(path) # Open file at path
+    # Iterate over lines in file
     for line in customer_orders:
+        # Strip whitespace from end of line
         line = line.rstrip()
+        # Split line along '|' to get list of strings
         words = line.split('|')
+        # Unpack list of strings and name variables
         cust_num, cust_name, cust_melons, cust_paid = words
-    cust_melons = int(cust_melons)
-    cust_paid = float(cust_paid)
+    cust_melons = int(cust_melons) # Change variable type from 'str' to 'int'
+    cust_paid = float(cust_paid) # Change variable type from 'str' to 'float'
 
+    # Calculate expected cost of customer order
     cust_expect = (cust_melons*melon_cost)
     
+    # Compare expected cost to what customer paid, if different, print statement with customer name, what was expected, and what they paid
     if cust_expect != cust_paid:
         print(f"{cust_name} paid ${cust_paid:.2f},",
             f"expected ${cust_expect:.2f}")
+    # Close the file
+    customer_orders.close()
     #return
 
+# Call the function
 customer_payment("/home/hackbright/src/homework/accounting/customer-orders.txt")
 
+#*** Hackbright starting code below***
 customer1_name = "Joe"
 customer1_melons = 5
 customer1_paid = 5.00
