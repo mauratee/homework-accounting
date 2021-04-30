@@ -7,14 +7,17 @@ def customer_payment(path):
         line = line.rstrip()
         words = line.split('|')
         cust_num, cust_name, cust_melons, cust_paid = words
+    cust_melons = int(cust_melons)
+    cust_paid = float(cust_paid)
 
     cust_expect = (cust_melons*melon_cost)
     
-    print(f"{cust_name} paid ${cust_paid:.2f},",
-          f"expected ${cust_expect:.2f}")
+    if cust_expect != cust_paid:
+        print(f"{cust_name} paid ${cust_paid:.2f},",
+            f"expected ${cust_expect:.2f}")
     #return
 
-customer_payment("customer-customer_orders.txt")
+customer_payment("/home/hackbright/src/homework/accounting/customer-orders.txt")
 
 customer1_name = "Joe"
 customer1_melons = 5
