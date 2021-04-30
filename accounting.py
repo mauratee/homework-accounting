@@ -1,5 +1,21 @@
 melon_cost = 1.00
 
+def customer_payment(path):
+    customer_orders = open(path)
+
+    for line in customer_orders:
+        line = line.rstrip()
+        words = line.split('|')
+        cust_num, cust_name, cust_melons, cust_paid = words
+
+    cust_expect = (cust_melons*melon_cost)
+    
+    print(f"{cust_name} paid ${cust_paid:.2f},",
+          f"expected ${cust_expect:.2f}")
+    #return
+
+customer_payment("customer-customer_orders.txt")
+
 customer1_name = "Joe"
 customer1_melons = 5
 customer1_paid = 5.00
