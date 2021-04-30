@@ -17,10 +17,11 @@ def customer_payment(path):
         # Calculate expected cost of customer order
         cust_expect = (cust_melons*melon_cost)
     
-        # Compare expected cost to what customer paid, if different, print statement with customer name, what was expected, and what they paid
-        if cust_expect != cust_paid:
-            print(f"{cust_name} paid ${cust_paid:.2f},",
-                f"expected ${cust_expect:.2f}")
+        # Compare expected cost to what customer paid, if overpaid print statement that they overpaid, if underpaid; print statement that they underpaid
+        if cust_expect < cust_paid:
+            print(f"{cust_name} OVER paid for their melons")
+        if cust_expect > cust_paid:
+            print(f"{cust_name} UNDER paid for their melons")
     # Close the file
     customer_orders.close()
     #return
